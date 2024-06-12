@@ -9,7 +9,7 @@ namespace FrankWilco.RimWorld
     [HarmonyPatchCategory(TestPackConstants.kDisturbedSleepCategory)]
     public class DisturbedSleepPatch
     {
-        private const int kKnownHash = -0x55FB4D02;
+        private const int kKnownHash = 0x444CF6EA;
 
         private static bool? _isApplicable;
         public static bool IsApplicable
@@ -29,6 +29,30 @@ namespace FrankWilco.RimWorld
         public static bool Prefix(Pawn __instance, Pawn source)
         {
             var traverse = new Traverse(__instance);
+
+            /*
+             * Original code from 1.5.8909.13066.
+             */
+            /*
+            if (needs.mood != null &&
+                !this.Awake() &&
+                base.Faction == Faction.OfPlayer &&
+                Find.TickManager.TicksGame >= lastSleepDisturbedTick + 300 &&
+                !Deathresting &&
+                (
+                    source == null ||
+                    (
+                        !LovePartnerRelationUtility.LovePartnerRelationExists(this, source) &&
+                        !(source.RaceProps.petness > 0f) &&
+                        (
+                            source.relations == null ||
+                            !source.relations.DirectRelations.Any(
+                                (DirectPawnRelation dr) => dr.def == PawnRelationDefOf.Bond)
+                        )
+                    )
+                )
+            )
+            */
 
             // Pawn has no mood.
             if (__instance.needs.mood == null)
