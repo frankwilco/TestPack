@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using System;
 using System.Collections.Generic;
 using Verse.AI;
 
@@ -11,24 +12,22 @@ namespace FrankWilco.RimWorld
     {
         // This prevents the "undignified throneroom" alert from showing up
         // for pawns with the ascetic trait.
-        [HarmonyPostfix]
+        [HarmonyPrefix]
         [HarmonyPatch(
             typeof(Pawn_RoyaltyTracker),
-            nameof(Pawn_RoyaltyTracker.GetUnmetThroneroomRequirements))]
-        public static IEnumerable<string> GetUnmetThroneroomRequirements_Postfix(
-            IEnumerable<string> __values,
+            nameof(Pawn_RoyaltyTracker.AnyUnmetThroneroomRequirements))]
+        public static bool AnyUnmetThroneroomRequirements_Prefix(
+            ref bool __result,
             Pawn_RoyaltyTracker __instance)
         {
             // Ignore throneroom requirements if our pawn has the
             // ascetic trait.
             if (__instance.pawn.story.traits.HasTrait(TraitDefOf.Ascetic))
             {
-                yield break;
+                __result = false;
+                return false;
             }
-            foreach (var value in __values)
-            {
-                yield return value;
-            }
+            return true;
         }
 
         // This prevents pawns with the ascetic trait from complaining or
@@ -39,22 +38,28 @@ namespace FrankWilco.RimWorld
             IEnumerable<Toil> __values,
             JobDriver_Reign __instance)
         {
-            foreach (var value in __values)
+            foreach (Toil value in __values)
             {
+                // Don't modify other toils.
+                if (value.debugName != "MakeNewToils")
+                {
+                    yield return value;
+                }
+
                 // It's a PITA to modify this using a transpiler. Since it's
                 // unlikely that this method will change anytime soon, we'll
                 // just try to override the toil's tick action to ignore the
                 // memory checks. If the meditation tick method does not exist
                 // or changes in a future game version, this will safely
                 // fallback to the original tick action.
-                var oldAction = value.tickAction;
+                Action oldAction = value.tickAction;
                 value.tickAction = delegate {
                     bool isAscetic = __instance.pawn.story.traits.HasTrait(
                         TraitDefOf.Ascetic);
                     if (isAscetic)
                     {
-                        var traverse = new Traverse(__instance);
-                        var tickMethod = traverse.Method("MeditationTick");
+                        Traverse traverse = new Traverse(__instance);
+                        Traverse tickMethod = traverse.Method("MeditationTick");
                         // Check first if the meditation tick method exists.
                         if (tickMethod.MethodExists())
                         {
