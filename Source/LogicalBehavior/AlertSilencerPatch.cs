@@ -7,6 +7,7 @@ using System.Reflection;
 namespace FrankWilco.RimWorld
 {
     [HarmonyPatch]
+    [HarmonyPatchCategory(TestPackConstants.kLogicalBehaviorCategory)]
     public static class AlertSilencerPatch
     {
         private static Collection<MethodBase> targetMethods;

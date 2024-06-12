@@ -12,6 +12,7 @@ namespace FrankWilco.RimWorld
     // Extreme blood loss should not be life threatening if
     // the bleeding was stopped (bleed rate total < 0).
     [HarmonyPatch(typeof(Alert_LifeThreateningHediff))]
+    [HarmonyPatchCategory(TestPackConstants.kLogicalBehaviorCategory)]
     public static class LifeThreateningAlertPatch
     {
         private static bool IsBloodLossLifeThreatening(Pawn pawn, Hediff hediff)

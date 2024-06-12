@@ -10,6 +10,7 @@ namespace FrankWilco.RimWorld
 {
     [HarmonyPatch(typeof(HealthAIUtility),
         nameof(HealthAIUtility.WantsToBeRescued))]
+    [HarmonyPatchCategory(TestPackConstants.kLogicalBehaviorCategory)]
     public static class NoAlcoholicRescuePatch
     {
         private static bool IsDrunk(Pawn pawn)

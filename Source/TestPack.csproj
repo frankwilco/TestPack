@@ -69,6 +69,7 @@
     <Compile Include="LessVisibleOverlay\CustomOverlayPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RulerDesignator\RulerDesignationDefOf.cs" />
+    <Compile Include="TestPackConstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\About\About.xml">

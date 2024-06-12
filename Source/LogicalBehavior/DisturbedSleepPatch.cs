@@ -6,6 +6,7 @@ using Verse;
 namespace FrankWilco.RimWorld
 {
     [HarmonyPatch(typeof(Pawn), "CheckForDisturbedSleep")]
+    [HarmonyPatchCategory(TestPackConstants.kDisturbedSleepCategory)]
     public class DisturbedSleepPatch
     {
         private const int kKnownHash = -0x55FB4D02;

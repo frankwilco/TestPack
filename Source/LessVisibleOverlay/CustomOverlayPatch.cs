@@ -6,6 +6,7 @@ using Verse;
 namespace FrankWilco.RimWorld
 {
     [HarmonyPatch]
+    [HarmonyPatchCategory(TestPackConstants.kLessVisibleOverlayCategory)]
     public static class CustomOverlayPatch
     {
         [HarmonyPrefix]

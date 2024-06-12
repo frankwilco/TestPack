@@ -8,6 +8,7 @@ using Verse.AI;
 namespace FrankWilco.RimWorld
 {
     [HarmonyPatch]
+    [HarmonyPatchCategory(TestPackConstants.kLogicalBehaviorCategory)]
     public static class JobSilencerPatch
     {
         private static Collection<MethodBase> targetMethods;

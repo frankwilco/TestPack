@@ -7,6 +7,7 @@ using static RimWorld.FoodUtility;
 namespace FrankWilco.RimWorld
 {
     [HarmonyPatch(typeof(FoodUtility), nameof(ThoughtsFromIngesting))]
+    [HarmonyPatchCategory(TestPackConstants.kLogicalBehaviorCategory)]
     public class NoFoodThoughtsForAnimals
     {
         // Colonists shouldn't give a damn about the food their animals eat.

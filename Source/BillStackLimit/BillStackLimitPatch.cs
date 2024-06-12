@@ -9,6 +9,7 @@ using Verse;
 namespace FrankWilco.RimWorld
 {
     [HarmonyPatch(typeof(BillStack))]
+    [HarmonyPatchCategory(TestPackConstants.kBillStackLimitCategory)]
     public static class BillStackLimitPatch
     {
         // Remove bill stack limit (currently 15).

@@ -32,8 +32,19 @@ namespace FrankWilco.RimWorld
             IsInitialized = true;
         }
 
-        // TODO: Use patch categories once they're available in
-        // the release version of Harmony.
+        public static void PatchMultiple(string[] targets)
+        {
+            foreach (var type in targets)
+            {
+                if (string.IsNullOrWhiteSpace(type))
+                {
+                    continue;
+                }
+
+                Instance.PatchCategory(type);
+            }
+        }
+
         public static void PatchMultiple(Type[] targets)
         {
             foreach (var type in targets)
@@ -46,6 +57,16 @@ namespace FrankWilco.RimWorld
                 var processor = new PatchClassProcessor(Instance, type);
                 processor.Patch();
             }
+        }
+
+        public static void Patch(string target)
+        {
+            if (string.IsNullOrWhiteSpace(target))
+            {
+                return;
+            }
+
+            Instance.PatchCategory(target);
         }
 
         public static void Patch(Type target)

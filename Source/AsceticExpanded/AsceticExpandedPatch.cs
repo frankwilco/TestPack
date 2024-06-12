@@ -6,6 +6,7 @@ using Verse.AI;
 namespace FrankWilco.RimWorld
 {
     [HarmonyPatch]
+    [HarmonyPatchCategory(TestPackConstants.kAsceticExpandedCategory)]
     public static class AsceticExpandedPatch
     {
         // This prevents the "undignified throneroom" alert from showing up

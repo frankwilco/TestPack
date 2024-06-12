@@ -1,5 +1,4 @@
-﻿using System;
-using Verse;
+﻿using Verse;
 
 namespace FrankWilco.RimWorld
 {
@@ -8,22 +7,19 @@ namespace FrankWilco.RimWorld
         public TestPackMod(ModContentPack content) : base(content)
         {
             ModUtils.Initialize(content.PackageId);
-
-            var targets = new Type[]
+            var targets = new string[]
             {
                 // Ascetic Expanded
-                typeof(AsceticExpandedPatch),
+                TestPackConstants.kAsceticExpandedCategory,
                 // Bill Stack Limit remover
-                typeof(BillStackLimitPatch),
+                TestPackConstants.kBillStackLimitCategory,
                 // Less Visible Overlays
-                typeof(CustomOverlayPatch),
+                TestPackConstants.kLessVisibleOverlayCategory,
                 // Logical Behaviors
-                typeof(AlertSilencerPatch),
-                typeof(JobSilencerPatch),
-                typeof(LifeThreateningAlertPatch),
-                DisturbedSleepPatch.IsApplicable ? typeof(DisturbedSleepPatch) : null,
-                typeof(NoAlcoholicRescuePatch),
-                typeof(NoFoodThoughtsForAnimals)
+                TestPackConstants.kLogicalBehaviorCategory,
+                DisturbedSleepPatch.IsApplicable
+                    ? TestPackConstants.kDisturbedSleepCategory
+                    : null,
             };
             ModUtils.PatchMultiple(targets);
         }
