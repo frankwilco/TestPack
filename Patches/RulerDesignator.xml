@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <!-- Add Ruler designator -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/DesignationCategoryDef[defName="Orders"]/specialDesignatorClasses</xpath>
+        <value>
+            <li>FrankWilco.RimWorld.Designator_Ruler</li>
+        </value>
+    </Operation>
+</Patch>

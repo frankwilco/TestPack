@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <!-- Modify the default marriage spot to be 3x3 unless we detect Better Spots,
+         which already has this patch in. -->
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Better Spots</li>
+        </mods>
+        <nomatch Class="PatchOperationSequence">
+            <success>Always</success>
+            <operations>
+                <li Class="PatchOperationReplace">
+                    <xpath>/Defs/ThingDef[defName = "MarriageSpot"]/graphicData/drawSize</xpath>
+                    <value>
+                        <drawSize>(3,1)</drawSize>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>/Defs/ThingDef[defName = "MarriageSpot"]/size</xpath>
+                    <value>
+                        <size>(3,1)</size>
+                    </value>
+                </li>
+            </operations>
+        </nomatch>
+    </Operation>
+</Patch>

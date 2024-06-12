@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <DesignationDef>
+        <defName>FwRuler</defName>
+        <texturePath>Designations/Plan</texturePath>
+        <targetType>Cell</targetType>
+    </DesignationDef>
+</Defs>
