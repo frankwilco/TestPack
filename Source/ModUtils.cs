@@ -98,6 +98,16 @@ namespace FrankWilco.RimWorld
             return GetMethodHash(methodInfo);
         }
 
+        public static void Log(string message)
+        {
+            string logText = $"[io.frankwilco] {message}";
+#if DEBUG
+            Verse.Log.Warning(logText);
+#else
+            Verse.Log.Message(logText);
+#endif
+        }
+
 #if DEBUG
         private const string kILDumpFile = "ildump.txt";
         private const string kILDumpRawFile = "ildump_raw.txt";

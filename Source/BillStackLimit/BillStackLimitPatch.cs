@@ -28,10 +28,7 @@ namespace FrankWilco.RimWorld
                 OpCodes.Ldarg_0,
                 OpCodes.Bge_S);
             section.CheckAll();
-            if (!section.IsFound)
-            {
-                Log.Warning("Failed to patch out the bill stack limit.");
-            }
+            ModUtils.Log($"Was BSL patch applied: {section.IsFound}");
             section.Remove();
             return codes.AsEnumerable();
         }

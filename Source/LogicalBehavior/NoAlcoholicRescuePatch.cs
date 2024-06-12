@@ -41,9 +41,7 @@ namespace FrankWilco.RimWorld
                 (object operand) => ((MethodInfo)operand).Name == "AlwaysDowned",
                 OpCodes.Ldarg_0,
                 OpCodes.Ret);
-#if DEBUG
-            Log.Warning($"[TP] Was NAR patch applied: {alwaysDownedSection.IsFound}");
-#endif
+            ModUtils.Log($"Was NAR patch applied: {alwaysDownedSection.IsFound}");
             if (alwaysDownedSection.IsFound)
             {
                 Label alwaysDownedCheckArgPushLabel = generator.DefineLabel();

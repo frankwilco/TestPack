@@ -20,10 +20,7 @@ namespace FrankWilco.RimWorld
                 {
                     int hash = ModUtils.GetMethodHash(typeof(Pawn), "CheckForDisturbedSleep");
                     _isApplicable = hash == kKnownHash;
-                    if (!_isApplicable.Value)
-                    {
-                        Log.Warning("[TP] Mismatched hash for disturbed sleep patch.");
-                    }
+                    ModUtils.Log($"Was DS patch applied: {_isApplicable}");
                 }
                 return _isApplicable.Value;
             }

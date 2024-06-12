@@ -39,9 +39,7 @@ namespace FrankWilco.RimWorld
                 (object operand) => ((MethodInfo)operand).Name == "FullyImmune",
                 OpCodes.Ldloc_3,
                 OpCodes.Brtrue_S);
-#if DEBUG
-            Log.Warning($"[TP] {immuneCheckSection.IsFound}");
-#endif
+            ModUtils.Log($"Was LTA patch applied: {immuneCheckSection.IsFound}");
             if (immuneCheckSection.IsFound &&
                 immuneCheckSection.EndInstruction != null)
             {
