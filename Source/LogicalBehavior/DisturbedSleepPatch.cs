@@ -20,7 +20,7 @@ namespace FrankWilco.RimWorld
                 {
                     int hash = ModUtils.GetMethodHash(typeof(Pawn), "CheckForDisturbedSleep");
                     _isApplicable = hash == kKnownHash;
-                    ModUtils.Log($"Was DS patch applied: {_isApplicable}");
+                    ModUtils.Log($"Was DS patch applied: {_isApplicable}, {hash} == {kKnownHash}");
                 }
                 return _isApplicable.Value;
             }
