@@ -37,7 +37,7 @@ namespace FrankWilco.RimWorld
                 1,
                 OpCodes.Call,
                 (object operand) => ((MethodInfo)operand).Name == "FullyImmune",
-                OpCodes.Ldloc_3,
+                OpCodes.Ldloc_S,
                 OpCodes.Brtrue_S);
             ModUtils.Log($"Was LTA patch applied: {immuneCheckSection.IsFound}");
             if (immuneCheckSection.IsFound &&
@@ -46,7 +46,7 @@ namespace FrankWilco.RimWorld
                 var bleedRateCheck = new Collection<CodeInstruction>()
                 {
                     new CodeInstruction(OpCodes.Ldloc_1),
-                    new CodeInstruction(OpCodes.Ldloc_3),
+                    new CodeInstruction(OpCodes.Ldloc_S) { operand = 4 },
                     CodeInstruction.Call(
                         typeof(LifeThreateningAlertPatch),
                         nameof(IsBloodLossLifeThreatening)),
