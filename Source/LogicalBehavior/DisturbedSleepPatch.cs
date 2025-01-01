@@ -9,7 +9,7 @@ namespace FrankWilco.RimWorld
     [HarmonyPatchCategory(TestPackConstants.kDisturbedSleepCategory)]
     public class DisturbedSleepPatch
     {
-        private const int kKnownHash = 0x444CF6EA;
+        private const int kKnownHash = -0x2D6A92A;
 
         private static bool? _isApplicable;
         public static bool IsApplicable
@@ -31,7 +31,7 @@ namespace FrankWilco.RimWorld
             var traverse = new Traverse(__instance);
 
             /*
-             * Original code from 1.5.8909.13066.
+             * Original code from 1.5.9102.32373.
              */
             /*
             if (needs.mood != null &&
