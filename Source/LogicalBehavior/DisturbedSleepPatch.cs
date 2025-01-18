@@ -9,23 +9,6 @@ namespace FrankWilco.RimWorld
     [HarmonyPatchCategory(TestPackConstants.kDisturbedSleepCategory)]
     public class DisturbedSleepPatch
     {
-        private const int kKnownHash = -0x2D6A92A;
-
-        private static bool? _isApplicable;
-        public static bool IsApplicable
-        {
-            get
-            {
-                if (_isApplicable == null)
-                {
-                    int hash = ModUtils.GetMethodHash(typeof(Pawn), "CheckForDisturbedSleep");
-                    _isApplicable = hash == kKnownHash;
-                    ModUtils.Log($"Was DS patch applied: {_isApplicable}, {hash} == {kKnownHash}");
-                }
-                return _isApplicable.Value;
-            }
-        }
-
         public static bool Prefix(Pawn __instance, Pawn source)
         {
             var traverse = new Traverse(__instance);

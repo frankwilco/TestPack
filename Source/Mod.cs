@@ -17,9 +17,7 @@ namespace FrankWilco.RimWorld
                 TestPackConstants.kLessVisibleOverlayCategory,
                 // Logical Behaviors
                 TestPackConstants.kLogicalBehaviorCategory,
-                DisturbedSleepPatch.IsApplicable
-                    ? TestPackConstants.kDisturbedSleepCategory
-                    : null,
+                TestPackConstants.kDisturbedSleepCategory,
             };
             ModUtils.PatchMultiple(targets);
         }
