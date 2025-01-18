@@ -26,7 +26,10 @@ namespace FrankWilco.RimWorld
                         nameof(Alert_LowBabyFood.GetReport)),
                     AccessTools.Method(
                         typeof(Alert_NeedWarmClothes),
-                        nameof(Alert_NeedWarmClothes.GetReport))
+                        nameof(Alert_NeedWarmClothes.GetReport)),
+                    AccessTools.Method(
+                        typeof(Alert_NeedResearchProject),
+                        nameof(Alert_NeedResearchProject.GetReport))
                 };
             }
             return targetMethods;
