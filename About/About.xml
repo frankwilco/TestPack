@@ -4,6 +4,7 @@
     <packageId>io.frankwilco.testpack</packageId>
     <supportedVersions>
         <li>1.5</li>
+        <li>1.6</li>
     </supportedVersions>
     <description>A set of fixes, patches, and other unrelated modifications for testing.</description>
     <url>https://github.com/frankwilco/</url>
