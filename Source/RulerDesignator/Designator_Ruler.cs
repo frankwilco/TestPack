@@ -6,13 +6,13 @@ namespace FrankWilco.RimWorld
 {
     public class Designator_Ruler : Designator_Cells
     {
-        public override int DraggableDimensions => 2;
+        // public override int DraggableDimensions => 2;
 
         public override bool DragDrawMeasurements => true;
 
         protected override DesignationDef Designation => RulerDesignationDefOf.FwRuler;
 
-        public override bool DragDrawOutline => false;
+        // public override bool DragDrawOutline => false;
 
         public Designator_Ruler()
         {
