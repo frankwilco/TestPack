@@ -52,6 +52,12 @@ namespace FrankWilco.RimWorld
                 // memory checks. If the meditation tick method does not exist
                 // or changes in a future game version, this will safely
                 // fallback to the original tick action.
+                bool tickActionMissing = value.tickAction == null;
+                ModUtils.Log($"Was AEP patch applied: {!tickActionMissing}");
+                if (tickActionMissing)
+                {
+                    yield return value;
+                }
                 Action oldAction = value.tickAction;
                 value.tickAction = delegate {
                     bool isAscetic = __instance.pawn.story.traits.HasTrait(
